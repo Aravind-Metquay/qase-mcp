@@ -1,3 +1,79 @@
+# Qase MCP Server
+
+## Description
+
+Qase MCP Server is a Model Context Protocol (MCP) server that exposes Qase Test Management APIs as tools for LLM clients. It helps generate, manage, and query test cases, suites, runs, and other Qase resources directly from MCP-enabled apps.
+
+## Installation & Setup
+
+### 1) Install dependencies
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+> If you prefer `uv`, you can run: `uv sync`
+
+### 2) Configure your Qase token
+
+Set the API token in your environment:
+
+```bash
+export QASE_API_TOKEN="your_qase_api_token"
+```
+
+### 3) Configure Claude Desktop
+
+1. Open Claude Desktop settings → **Developer** → **Edit Config**.
+2. Add a new MCP server entry:
+
+```json
+{
+  "mcpServers": {
+    "qase": {
+      "command": "python",
+      "args": ["main.py"],
+      "env": {
+        "QASE_API_TOKEN": "your_qase_api_token"
+      }
+    }
+  }
+}
+```
+
+3. Save and restart Claude Desktop.
+
+### 4) Configure other MCP clients
+
+Most MCP clients support the same `command`, `args`, and `env` format. Point the client to this repo and use:
+
+```json
+{
+  "command": "python",
+  "args": ["main.py"],
+  "env": {
+    "QASE_API_TOKEN": "your_qase_api_token"
+  }
+}
+```
+
+### 5) Run locally (optional)
+
+```bash
+python main.py
+```
+
+## Capabilities (Quick View)
+
+- List, create, update, and delete test cases and suites
+- Create and complete test runs and results
+- Manage shared steps, parameters, defects, and milestones
+- Search across Qase entities using QQL
+
+---
+
 # Qase API Documentation for Test Case Generation & MCP Server Development
 
 ## Overview
