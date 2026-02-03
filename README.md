@@ -33,8 +33,9 @@ export QASE_API_TOKEN="your_qase_api_token"
 {
   "mcpServers": {
     "qase": {
-      "command": "python",
-      "args": ["main.py"],
+      "command": "C:\\Python312\\python.exe",
+      "args": ["D:\\GitHub\\qase-mcp\\main.py"],
+      "cwd": "D:\\GitHub\\qase-mcp",
       "env": {
         "QASE_API_TOKEN": "your_qase_api_token"
       }
